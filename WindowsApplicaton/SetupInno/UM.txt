@@ -1,0 +1,2 @@
+app|version|release date|url|file
+updateme|1.0.0.2|21/08/2023|https://lms.iethanoi.edu.vn/version_update/|update_1.0.0.2.zip

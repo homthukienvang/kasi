@@ -1,0 +1,256 @@
+#include <idp.iss>
+
+[Setup]
+AppName=KASI
+AppVersion=1.0.1.1
+DefaultDirName={pf}\KASI
+AppPublisher=KASI
+AppPublisherURL=https://lms.stemkasi.vn
+DefaultGroupName=KASI
+SetupIconFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\icon.ico
+WizardImageFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\logobig.bmp
+WizardSmallImageFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\logo1.bmp
+UninstallDisplayIcon={app}\KASI.exe
+OutputBaseFilename=KASI_Setup_1.0.1.1
+UninstallDisplayName=KASI
+CreateUninstallRegKey=yes
+OutputDir=userdocs:Inno Setup Examples Output
+
+[UninstallDelete]
+;This works only if it is installed in default location
+Type: filesandordirs; Name: {pf}\KASI
+[InstallDelete]
+;Type: filesandordirs; Name: {pf}\KASI
+ Type: files; Name: {app}\AppServices.dll
+ Type: files; Name: {app}\Repositories.dll
+ Type: files; Name: {app}\Model.dll
+
+[Languages]
+Name: Vietnamese; MessagesFile: "Vietnamese.isl"
+
+[Dirs]
+Name: "{app}"; Permissions: everyone-full
+Name: "{app}\App_data"; Permissions: everyone-full
+
+[Files]
+Source: "Packages\Firefox\*"; DestDir: "{app}\Firefox";Permissions: everyone-full;
+Source: "Packages\Firefox\*.dll"; DestDir: "{sys}"; Flags: onlyifdoesntexist sharedfile ignoreversion recursesubdirs createallsubdirs;Permissions: everyone-full
+Source: "Packages\Firefox\*.dll"; DestDir: "{syswow64}"; Flags: onlyifdoesntexist sharedfile 64bit ignoreversion recursesubdirs createallsubdirs;Permissions: everyone-full; Check: IsWin64;
+Source: "Packages\Pdf\*"; DestDir: "{app}\Pdf";Permissions: everyone-full;
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\icon.ico"; DestDir: "{app}";Permissions: everyone-full
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.dll"; DestDir: "{app}";Permissions: everyone-full
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\App_data\data.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
+
+[Icons] 
+Name: {group}\KASI; Filename: {app}\KASI.exe; WorkingDir: {app}; IconFilename: {app}\icon.ico; Comment: "KASI";
+Name: {commondesktop}\KASI; Filename: {app}\KASI.exe; WorkingDir: {app}; IconFilename: {app}\icon.ico; Comment: "KASI"; 
+
+[Registry]
+Root: HKCU; Subkey: "Software\KASI"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\KASI"; Flags: uninsdeletekey
+Root: HKLM; Subkey: "Software\KASI\Settings"; ValueType: string; ValueName: "Path"; ValueData: "{app}"
+Root: HKLM; Subkey: "SOFTWARE\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: String; ValueName: "{app}\KASI.exe"; ValueData: "RUNASADMIN"; Flags: uninsdeletekeyifempty uninsdeletevalue; 
+
+[UninstallDelete]
+Type: dirifempty; Name: "{app}";
+
+[Code]
+const  
+  FrameworkURL = 'https://lms.stemkasi.vn/dependencies/NDP48-x86-x64-AllOS-ENU.exe';
+  FrameworkInstallerFileName = '{tmp}\NDP48-x86-x64-AllOS-ENU.exe';     
+  Framework48ReleaseVersion = 528040;// Giá trị Release tương ứng với .NET Framework 4.8 là 528040
+    
+  Sql64URL = 'https://lms.stemkasi.vn/dependencies/SSCERuntime_x64-ENU.exe';
+  Sql64InstallerFileName = '{tmp}\SSCERuntime_x64-ENU.exe';   
+  
+  Sql86URL = 'https://lms.stemkasi.vn/dependencies/SSCERuntime_x86-ENU.exe';
+  Sql86InstallerFileName = '{tmp}\SSCERuntime_x86-ENU.exe'; 
+  
+  //Visual C++ 2005
+  VisualCUrl = 'https://lms.stemkasi.vn/dependencies/VC_redist.x86.exe';
+  VisualCInstallerName = '{tmp}\VC_redist.x86.exe'; 
+  
+var CancelWithoutPrompt: boolean;
+
+//-----------------các hàm kiểm tra môi trường trong REGISTRY
+function IsVC2005Installed: Boolean;
+begin
+  // Kiểm tra xem phiên bản VC++ 2005 Redistributable x86 đã được cài đặt chưa
+  // để lấy đúng phiên bản, xem list sau: https://zzz.buzz/notes/vc-redist-packages-and-related-registry-entries/
+  Result := RegKeyExists(HKLM, 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{ad8a2fa1-06e7-4b0d-927d-6e54b3d31028}') or
+            RegKeyExists(HKLM, 'SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\{710f4c1c-cc18-4c49-8cbf-51240c89a1a2}');
+end;
+
+function IsFrameworkInstalled: Boolean;
+var
+    ReleaseVersion: Cardinal;
+begin  
+    // Kiểm tra khóa registry và lấy giá trị Release
+    if RegQueryDWordValue(HKLM, 'SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full', 'Release', ReleaseVersion) then
+    begin
+        // Kiểm tra nếu phiên bản lớn hơn hoặc bằng 528040 (tức là .NET Framework 4.8 hoặc cao hơn)
+        Result := ReleaseVersion >= Framework48ReleaseVersion;
+    end
+    else
+    begin
+        // Trả về False nếu không tìm thấy khóa registry hoặc giá trị Release
+        Result := False;
+    end;
+end;
+
+function IsSqlInstalled: Boolean;
+var
+  IsInstalled: Boolean;
+begin
+  // Kiểm tra sql server compact edition phiên bản 4.0
+  IsInstalled := RegKeyExists(HKLM, 'SOFTWARE\Microsoft\Microsoft SQL Server Compact Edition\v4.0');  //check 32bit
+  if not IsInstalled then
+    IsInstalled := RegKeyExists(HKLM, 'SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server Compact Edition\v4.0');  //64-bit
+
+  Result := IsInstalled;
+end;
+
+//-----------------các hàm kiểm tra môi trường trong REGISTRY
+
+//-------các hàm install
+
+procedure InstallFramework;
+var
+  ResultCode: Integer;
+  StatusText: string;
+begin
+  StatusText := WizardForm.StatusLabel.Caption;
+  WizardForm.StatusLabel.Caption := 'Ðang cài .NET framework 4.8...';
+  WizardForm.ProgressGauge.Style := npbstMarquee;
+  try
+      if not Exec(ExpandConstant(FrameworkInstallerFileName), '/q /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+  begin    
+    MsgBox('Lỗi cài đặt Microsoft Windows Desktop .NET framework 4.8: ' + IntToStr(ResultCode) + '.', mbError, MB_OK);
+    CancelWithoutPrompt := true;    
+  end;
+  finally
+    WizardForm.StatusLabel.Caption := StatusText;
+    WizardForm.ProgressGauge.Style := npbstNormal;
+  end;
+end;
+
+procedure InstallSQL;
+var
+  ResultCode: Integer;
+  StatusText: string;
+  InstallFilePath: string;
+begin
+  try
+    StatusText := WizardForm.StatusLabel.Caption;
+    WizardForm.StatusLabel.Caption := 'Ðang cài cơ sở dữ liệu...';
+    WizardForm.ProgressGauge.Style := npbstMarquee;
+    if IsWin64 then
+    begin      
+      InstallFilePath := ExpandConstant(Sql64InstallerFileName);             
+    end
+    else
+    begin      
+      InstallFilePath := ExpandConstant(Sql86InstallerFileName);
+    end;
+    
+    if not Exec(InstallFilePath, '', '', SW_SHOW, ewWaitUntilTerminated, ResultCode) then
+    begin          
+      MsgBox('Lỗi cài đặt cơ sở dữ liệu: ' + IntToStr(ResultCode) + '.', mbError, MB_OK);
+      CancelWithoutPrompt := true;
+      WizardForm.Close;       
+    end;  
+  finally
+      WizardForm.StatusLabel.Caption := StatusText;
+      WizardForm.ProgressGauge.Style := npbstNormal;
+  end;
+end;
+
+procedure InstallVC2005;
+var
+  ResultCode: Integer;
+  StatusText: string;
+begin
+  StatusText := WizardForm.StatusLabel.Caption;
+  WizardForm.StatusLabel.Caption := 'Ðang cài Microsoft Visual C++ 2005 Redistributable...';
+  WizardForm.ProgressGauge.Style := npbstMarquee;
+  try
+    if not Exec(ExpandConstant(VisualCInstallerName), '/install /quiet /norestart', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+    begin    
+      MsgBox('Lỗi cài đặt Microsoft Visual C++ 2005 Redistributable: ' + IntToStr(ResultCode) + '.', mbError, MB_OK);
+      CancelWithoutPrompt := true;    
+    end;
+  finally
+    WizardForm.StatusLabel.Caption := StatusText;
+    WizardForm.ProgressGauge.Style := npbstNormal;
+  end;
+end;
+//----------------------
+
+function InitializeSetup(): Boolean;
+begin
+  CancelWithoutPrompt := false;
+  result := true;
+end;
+
+procedure CancelButtonClick(CurPageID: Integer; var Cancel, Confirm: Boolean);
+begin
+  if CurPageID=wpInstalling then
+    Confirm := not CancelWithoutPrompt;
+end;
+
+procedure InitializeWizard();
+begin
+    //download
+    if not IsVC2005Installed then
+    begin
+      idpAddFile(VisualCUrl, ExpandConstant(VisualCInstallerName));
+    end;
+    
+    if not IsFrameworkInstalled then
+    begin
+      idpAddFile(FrameworkURL, ExpandConstant(FrameworkInstallerFileName));
+    end;
+    
+    if not IsSqlInstalled then
+    begin
+      if IsWin64 then
+      begin 
+        idpAddFile(Sql64URL, ExpandConstant(Sql64InstallerFileName));
+      end
+      else
+      begin
+        idpAddFile(Sql86URL, ExpandConstant(Sql86InstallerFileName));
+      end
+    end;
+    
+    idpDownloadAfter(wpReady);
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  ResultCode: Integer;
+begin
+  // Khi bước cài đặt chính hoàn tất
+  if CurStep = ssPostInstall then
+  begin
+    //visual C++
+    if not IsVC2005Installed then 
+    begin      
+      InstallVC2005();
+    end;
+    
+    // Kiểm tra xem Framework đã được cài đặt chưa
+    if not IsFrameworkInstalled then 
+    begin      
+      InstallFramework();
+    end;
+    
+    // Kiểm tra SQL
+    if not IsSqlInstalled then 
+    begin      
+      InstallSQL();
+    end;
+  end;
+end;

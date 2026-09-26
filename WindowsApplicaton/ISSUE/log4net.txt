@@ -1,0 +1,20 @@
+DEBUG 2022-03-18 16:23:39,800 13648ms frmLogin               <Login>b__2        - Login result: 0
+DEBUG 2022-03-18 16:41:20,252 1074100ms frmLogin               <Login>b__2        - Login result: 0
+DEBUG 2022-03-18 16:58:57,825  1410ms frmLogin               DisplayStatusNet   - connect internet: True
+DEBUG 2022-03-18 16:59:24,382 27967ms frmLogin               <Login>b__0        - start worker
+DEBUG 2022-03-18 16:59:24,439 28024ms frmLogin               <Login>b__2        - worker complete, login result: 0
+DEBUG 2022-03-18 17:12:16,687  1395ms frmLogin               DisplayStatusNet   - connect internet: True
+DEBUG 2022-03-18 17:12:27,774 12482ms frmLogin               <Login>b__0        - start worker
+ERROR 2022-03-18 17:12:27,823 12532ms DISKHelper             GetDisk            - System.Management.ManagementException: Not found 
+   at System.Management.ManagementException.ThrowWithExtendedInfo(ManagementStatus errorCode)
+   at System.Management.ManagementObject.Initialize(Boolean getObject)
+   at System.Management.ManagementBaseObject.get_ClassName()
+   at System.Management.ManagementClass.GetInstances(EnumerationOptions options)
+   at System.Management.ManagementClass.GetInstances()
+   at DXWindows.Helper.DISKHelper.GetCollection(String propName)
+   at DXWindows.Helper.DISKHelper.GetDisk()
+DEBUG 2022-03-18 17:12:27,831 12539ms frmLogin               <Login>b__0        - info: userName=lethinhungthqh&passWord=e10adc3949ba59abbe56e057f20f883e&macIp=f655f5f0a49826da11b0de7d73a3a257
+DEBUG 2022-03-18 17:12:28,313 13022ms frmLogin               <Login>b__0        - login response:{"ClientId":52787,"FullName":"Lê Th? NhungTHQH","UserName":"lethinhungthqh","Phone":"0915373902","Email":"2E","ImageUrl":null,"IsActived":false,"IsLock":false,"IsDeleted":false,"PassWork":"e10adc3949ba59abbe56e057f20f883e","RowIndex":0,"TotalRowCount":0,"MacIp":"f655f5f0a49826da11b0de7d73a3a257","SavePass":false,"EndDate":"2022-09-01T00:00:00","FullLesson":false,"ServerTime":"2022-03-18T17:12:28.7686959+07:00","Address":"lethinhung@quynhluu.edu.vn"}
+DEBUG 2022-03-18 17:12:28,457 13166ms frmLogin               <Login>b__0        - LoginToApp
+{"ClientId":52787,"FullName":"Lê Th? NhungTHQH","UserName":"lethinhungthqh","Phone":"0915373902","Email":"lethinhung@quynhluu.edu.vn              ","ImageUrl":null,"IsActived":false,"IsLock":false,"IsDeleted":false,"PassWork":"e10adc3949ba59abbe56e057f20f883e","RowIndex":0,"TotalRowCount":0,"MacIp":null,"SavePass":false,"EndDate":"2022-09-01T00:00:00","FullLesson":false,"ServerTime":"0001-01-01T00:00:00","Address":null}
+DEBUG 2022-03-18 17:12:28,460 13169ms frmLogin               <Login>b__2        - worker complete, login result: 0

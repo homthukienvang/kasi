@@ -1,0 +1,57 @@
+﻿@{
+    ViewBag.Title = "Quản lý trường học";
+}
+
+@model  DataModel.Base.PagedData<Model.School>
+<script src="~/assets/adminjs/school.js?v=12"></script>
+
+
+<!-- Modal -->
+<div id="AddForm"></div>
+
+
+<div class="row">
+    <div class="col-xs-12" style="margin-bottom: 10px">
+        <div class="">
+            <button data-toggle="modal" id="AddSchool" class="btn btn-xs btn-primary">
+                <i class="fa fa-plus"></i>
+                Thêm mới
+            </button>
+
+            <a href="#" onclick="App.School.exportListSchoolClick()" class="btn btn-xs btn-success">
+                <i class="icon-download bigger-120"></i> Export trường
+            </a>
+        </div>
+        <div>
+            <input id="tSchoolCode" name="tSchoolCode" placeholder="Mã trường" class="lessonsearchbox" style="width: 300px" type="text" value="">
+            <input id="tCityCode" name="tCityCode" placeholder="Mã tỉnh thành" class="lessonsearchbox" style="width: 300px" type="text" value="">
+            <input id="tDistrictCode" name="tDistrictCode" placeholder="Mã phường/xã" class="lessonsearchbox" style="width: 300px" type="text" value="">
+            <button onclick="Search()" class="btn btn-xs btn-primary">
+                <i class="fa fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+        <!-- #nav-search -->
+    </div>
+</div>
+
+<div class="clear-fix"></div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-responsive">
+
+            <div id="result">
+                @{
+                    Html.RenderPartial("List", Model);
+                }
+            </div>
+
+        </div>
+        <!-- /.table-responsive -->
+    </div>
+    <!-- /span -->
+</div>
+<!-- /row -->
+
+<div class="hr hr-18 dotted hr-double"></div>

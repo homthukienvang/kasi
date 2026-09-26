@@ -1,0 +1,7 @@
+﻿-Using LINQPad to managament SDF file data
+
+https://lms.iethanoi.edu.vn/Admin/Home/Login
+admin/mcc@6789
+
+TK login test app: 
+	admintest/123456

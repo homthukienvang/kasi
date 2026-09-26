@@ -1,0 +1,195 @@
+ERROR 2020-07-29 14:45:39,744 24543ms Logger                 LogError           - Login
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Repositories.Implementations.CommonRepository.GetListByStore[T](String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 332
+   at Repositories.Implementations.CommonRepository.GetObjectByStore[T](String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 361
+   at Services.UserService.Login(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 214
+   at WebApplication.Areas.Admin.Controllers.HomeController.Login(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\HomeController.cs:line 57
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+ERROR 2020-07-29 14:50:01,760 286559ms Logger                 LogError           - Login
+System.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Repositories.Implementations.CommonRepository.GetListByStore[T](String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 332
+   at Repositories.Implementations.CommonRepository.GetObjectByStore[T](String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 361
+   at Services.UserService.Login(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 214
+   at WebApplication.Areas.Admin.Controllers.HomeController.Login(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\HomeController.cs:line 57
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+ERROR 2020-07-29 14:55:40,338 231290ms Logger                 LogError           - Create Lesson
+System.Exception: Procedure or function 'Proc_Insert_Lesson' expects parameter '@RoomTimeId', which was not supplied.
+   at Repositories.Implementations.CommonRepository.ExcuteStoreGetValueV2(String storeName, Object obj) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 208
+   at Services.LessonService.Create(Lesson entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\LessonService.cs:line 120
+   at WebApplication.Areas.Admin.Controllers.LessonController.Create(Lesson model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 81
+ERROR 2020-07-30 10:55:37,065 1061421ms Logger                 LogError           - UploadDocument
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.DocumentService.<>c__DisplayClass10_0.<UpdateListDocument>b__0() in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\DocumentService.cs:line 185
+   at Repositories.Implementations.CommonRepository.WithTransaction(Func`1 func) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 448
+   at Services.DocumentService.UpdateListDocument(IEnumerable`1 documents, Int32 lessionId) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\DocumentService.cs:line 180
+   at WebApplication.Areas.Admin.Controllers.LessonController.UploadDocument(Lesson model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 163
+ERROR 2020-07-30 10:59:59,376 1323732ms Logger                 LogError           - UploadDocument
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.DocumentService.<>c__DisplayClass10_0.<UpdateListDocument>b__0() in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\DocumentService.cs:line 185
+   at Repositories.Implementations.CommonRepository.WithTransaction(Func`1 func) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 448
+   at Services.DocumentService.UpdateListDocument(IEnumerable`1 documents, Int32 lessionId) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\DocumentService.cs:line 180
+   at WebApplication.Areas.Admin.Controllers.LessonController.UploadDocument(Lesson model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 163
+ERROR 2021-05-28 10:37:56,490 501357ms Logger                 LogError           - Create User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Create(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 124
+   at WebApplication.Areas.Admin.Controllers.UserController.Create(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 73
+ERROR 2021-05-28 11:05:04,701 2129569ms Logger                 LogError           - Create User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Create(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 124
+   at WebApplication.Areas.Admin.Controllers.UserController.Create(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 73
+ERROR 2021-05-28 11:05:54,853 2179720ms Logger                 LogError           - Edit User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 169
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ERROR 2021-05-28 11:06:14,408 2199275ms Logger                 LogError           - Edit User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 169
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ERROR 2021-05-28 11:08:07,517 2312384ms Logger                 LogError           - Create User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Create(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 124
+   at WebApplication.Areas.Admin.Controllers.UserController.Create(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 73
+ERROR 2021-05-28 11:16:15,636 124119ms Logger                 LogError           - Create User
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.UserService.Create(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 124
+   at WebApplication.Areas.Admin.Controllers.UserController.Create(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 73
+ERROR 2021-05-28 11:26:27,905 37578ms Logger                 LogError           - Edit User
+System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'stemplus_m2m.acc.User'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Repositories.Implementations.CommonRepository.ExcuteStore(String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 244
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 165
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ClientConnectionId:e5a8970f-5d0b-454e-9ee2-6dfb62458e38
+Error Number:515,State:2,Class:16
+ERROR 2021-05-28 11:27:15,733 85406ms Logger                 LogError           - Edit User
+System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'stemplus_m2m.acc.User'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Repositories.Implementations.CommonRepository.ExcuteStore(String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 244
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 165
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ClientConnectionId:e5a8970f-5d0b-454e-9ee2-6dfb62458e38
+Error Number:515,State:2,Class:16
+ERROR 2021-05-28 11:27:57,276 126948ms Logger                 LogError           - Edit User
+System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'stemplus_m2m.acc.User'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Repositories.Implementations.CommonRepository.ExcuteStore(String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 244
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 165
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ClientConnectionId:e5a8970f-5d0b-454e-9ee2-6dfb62458e38
+Error Number:515,State:2,Class:16
+ERROR 2021-05-28 11:28:33,593 163266ms Logger                 LogError           - Edit User
+System.Data.SqlClient.SqlException (0x80131904): Cannot insert the value NULL into column 'UserName', table 'stemplus_m2m.acc.User'; column does not allow nulls. UPDATE fails.
+The statement has been terminated.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Repositories.Implementations.CommonRepository.ExcuteStore(String storeName, KeyValuePair`2[] parameters) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 244
+   at Services.UserService.Update(User entry) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\Services\UserService.cs:line 165
+   at WebApplication.Areas.Admin.Controllers.UserController.Edit(User model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\UserController.cs:line 111
+ClientConnectionId:e5a8970f-5d0b-454e-9ee2-6dfb62458e38
+Error Number:515,State:2,Class:16
+ERROR 2021-05-28 14:20:41,718 8816819ms Logger                 LogError           - Edit Client
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at WebApplication.Areas.Admin.Controllers.ClientController.Edit(Client model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\ClientController.cs:line 386
+ERROR 2021-05-28 14:25:43,911 9119012ms Logger                 LogError           - Edit Client
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at WebApplication.Areas.Admin.Controllers.ClientController.Edit(Client model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\ClientController.cs:line 386
+ERROR 2021-05-28 14:28:17,317 84803ms Logger                 LogError           - Edit Client
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Int32.Parse(String s)
+   at WebApplication.Areas.Admin.Controllers.ClientController.Edit(Client model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\ClientController.cs:line 386
+ERROR 2021-05-28 15:56:15,787 793617ms Logger                 LogError           - Create Right
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WebApplication.Areas.Admin.Controllers.HomeController.ReloadRight() in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\HomeController.cs:line 94
+   at WebApplication.Areas.Admin.Controllers.RightController.Create(Right model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\RightController.cs:line 76
+ERROR 2021-05-28 15:58:02,685 900516ms Logger                 LogError           - Create Right
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at WebApplication.Areas.Admin.Controllers.HomeController.ReloadRight() in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\HomeController.cs:line 94
+   at WebApplication.Areas.Admin.Controllers.RightController.Create(Right model) in D:\DungHoang\Working\AVG\POKI.VN\branches\stem\ServerApplicaton\WebApplication\Areas\Admin\Controllers\RightController.cs:line 76
+ERROR 2023-08-19 16:56:54,611 246561ms Logger                 LogError           - UploadDocument
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.DocumentService.<>c__DisplayClass10_0.<UpdateListDocument>b__0() in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 185
+   at Repositories.Implementations.CommonRepository.WithTransaction(Func`1 func) in E:\WORK\IET\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 448
+   at Services.DocumentService.UpdateListDocument(IEnumerable`1 documents, Int32 lessionId) in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 180
+   at WebApplication.Areas.Admin.Controllers.LessonController.UploadDocument(Lesson model) in E:\WORK\IET\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 161
+ERROR 2023-08-19 16:57:04,974 256924ms Logger                 LogError           - UploadDocument
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.DocumentService.<>c__DisplayClass10_0.<UpdateListDocument>b__0() in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 185
+   at Repositories.Implementations.CommonRepository.WithTransaction(Func`1 func) in E:\WORK\IET\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 448
+   at Services.DocumentService.UpdateListDocument(IEnumerable`1 documents, Int32 lessionId) in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 180
+   at WebApplication.Areas.Admin.Controllers.LessonController.UploadDocument(Lesson model) in E:\WORK\IET\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 161
+ERROR 2023-08-19 16:57:58,609 310559ms Logger                 LogError           - UploadDocument
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Services.DocumentService.<>c__DisplayClass10_0.<UpdateListDocument>b__0() in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 185
+   at Repositories.Implementations.CommonRepository.WithTransaction(Func`1 func) in E:\WORK\IET\ServerApplicaton\Repositories\Implementations\CommonRepository.cs:line 448
+   at Services.DocumentService.UpdateListDocument(IEnumerable`1 documents, Int32 lessionId) in E:\WORK\IET\ServerApplicaton\Services\DocumentService.cs:line 180
+   at WebApplication.Areas.Admin.Controllers.LessonController.UploadDocument(Lesson model) in E:\WORK\IET\ServerApplicaton\WebApplication\Areas\Admin\Controllers\LessonController.cs:line 161
