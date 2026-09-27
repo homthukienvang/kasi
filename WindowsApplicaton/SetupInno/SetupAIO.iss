@@ -38,6 +38,7 @@ Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\icon.ico"; 
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.dll"; DestDir: "{app}";Permissions: everyone-full
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
+Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\runtimes\win-x86\native\*"; DestDir: "{app}\runtimes\win-x86\native";Permissions: everyone-full;
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\App_data\data.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
 Source: "D:\WORK\git\DADS\window_app_dependencies\dependencies\UltraViewerQS.exe"; DestDir: {app}; Permissions: everyone-full;
 
