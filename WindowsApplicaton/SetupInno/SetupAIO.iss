@@ -2,7 +2,7 @@
 
 [Setup]
 AppName=KASI
-AppVersion=1.0.1.1
+AppVersion=1.0.2.0
 DefaultDirName={pf}\KASI
 AppPublisher=KASI
 AppPublisherURL=https://lms.stemkasi.vn
@@ -11,7 +11,7 @@ SetupIconFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\icon.i
 WizardImageFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\logobig.bmp
 WizardSmallImageFile=D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\Resources\logo1.bmp
 UninstallDisplayIcon={app}\KASI.exe
-OutputBaseFilename=KASI_Setup_1.0.1.1
+OutputBaseFilename=KASI_Setup_1.0.2.0
 UninstallDisplayName=KASI
 CreateUninstallRegKey=yes
 OutputDir=userdocs:Inno Setup Examples Output
@@ -39,6 +39,7 @@ Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.dll
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.exe"; DestDir: "{app}" ;Permissions: everyone-full
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\*.config"; DestDir: "{app}" ;Permissions: everyone-full
 Source: "D:\WORK\git\DADS\kasi\WindowsApplicaton\DXWindows\bin\x86\Release\App_data\data.sdf"; DestDir: "{app}\App_data";Permissions: everyone-full;Flags: ignoreversion recursesubdirs createallsubdirs onlyifdoesntexist
+Source: "D:\WORK\git\DADS\window_app_dependencies\dependencies\UltraViewerQS.exe"; DestDir: {app}; Permissions: everyone-full;
 
 [Icons] 
 Name: {group}\KASI; Filename: {app}\KASI.exe; WorkingDir: {app}; IconFilename: {app}\icon.ico; Comment: "KASI";
