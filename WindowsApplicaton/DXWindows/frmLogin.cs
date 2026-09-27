@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
@@ -47,31 +46,16 @@ namespace DXWindows
 
         private void frmLogin_Load(object sender, EventArgs e)
         {
-            //bw = new BackgroundWorker();
-            //bw.DoWork += (o, ev) =>
-            //{
-            //    BackgroundInit();
-            //};
-            //bw.RunWorkerCompleted += (o, ev) =>
-            //{
-            //    BackgroundSucceed();
-            //};
-            //bw.RunWorkerAsync();
-
-            // Create a minimal test Lesson so frmViewWeb_Load can use LessonId and Name
-            var testLesson = new Lesson { LessonId = 1, Name = "Test Lesson" };
-
-            // Set FilePath (and optionally FolderPath, AllowPrint) before showing the form
-            var frm = new frmViewWeb
+            bw = new BackgroundWorker();
+            bw.DoWork += (o, ev) =>
             {
-                FilePath = @"C:\Users\Administrator\Downloads\Telegram Desktop\Nông trại thông minh V8\STEMPLUS-Nong-trai-thong-minh-V2-HTML5-v8.html",
-                FolderPath = @"C:\Users\Administrator\Downloads\Telegram Desktop\Nông trại thông minh V8",
-                CurrentLesson = testLesson,
-                AllowPrint = false
+                BackgroundInit();
             };
-
-            // how to start frmViewWeb?
-
+            bw.RunWorkerCompleted += (o, ev) =>
+            {
+                BackgroundSucceed();
+            };
+            bw.RunWorkerAsync();
         }
 
         /// <summary>
@@ -190,10 +174,6 @@ namespace DXWindows
                         macIp = macIp.Substring(0, 50);
 
                     var clientService = new ClientService();
-
-                    //init optional for HTTPS authentication
-                    if (GlobalSession.BaseApiUrl.StartsWith("https"))
-                        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
 
                     using (var client = new HttpClient())
                     {
