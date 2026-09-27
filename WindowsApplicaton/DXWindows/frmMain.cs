@@ -21,7 +21,6 @@ using System.Diagnostics;
 using Model.Model;
 using DevExpress.LookAndFeel;
 using AppServices;
-using Gecko;
 using log4net;
 using Exception = System.Exception;
 using Screen = System.Windows.Forms.Screen;
@@ -90,10 +89,6 @@ namespace DXWindows
                 //load version label
                 CurrentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString(); //sample: 1.0.2.3   Major Version/ Minor Version/ Build Number/ Revision
                 lblVersion.Text += CurrentVersion;
-
-                //load GeckoFx45
-                Xpcom.EnableProfileMonitoring = false;
-                Xpcom.Initialize("Firefox");
             }
             catch (Exception ex)
             {

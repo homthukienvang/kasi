@@ -30,17 +30,12 @@
 - Không lặp lại giải pháp sai quá 2 lần
 - Đổi Plan phải chờ phê duyệt
 
-### 4. Version Control & Task Management
-**TaskId**: Jira Issue {PROJECT-NUMBER} (VD: AID-123)
-- Branch: {tên nhánh hiện tại}-{taskId}
-- Commit: {taskId} - {Nội dung Tiếng Việt}
 
 ### 5. Claude Code Rules
 **Model Selection:**
 
 | Phase | Model khuyến nghị | Ghi chú |
 |-------|-------|---------|
-| Xác định taskId | Haiku | Quick check, simple |
 | Planning (EnterPlanMode) | Sonnet | Main context, Design & Plan |
 | └─ Phase 1 (Context scan) | Haiku (Task/Explore) | Delegate qua Task tool |
 | Implementation + Verification | Haiku | Delegate qua Task tool |
@@ -49,7 +44,6 @@ User có thể chọn Opus nếu cần (xem escalation flow)
 
 **BẮT BUỘC:** Trước mỗi bước/phase/task, thông báo model THỰC TẾ đang chạy (lấy từ system prompt)
 Ví dụ:
-  - "Bước 1: Xác định taskId (Haiku)"
   - "Planning Phase - EnterPlanMode (Opus)"
   - "Phase 1: Context scan - Task(Explore, Sonnet)"
 
@@ -58,12 +52,7 @@ Ví dụ:
 ## II. Workflows (Tuần tự & Bắt buộc)
 
 ### Bước 1: Xác định taskId
-- Xác định {taskId} từ yêu cầu (format: xem Global Rules)
-
-🛑 **DỪNG NGAY** nếu chưa có {taskId}:
-  - Không làm công việc nào khác
-  - Yêu cầu user bổ sung {taskId}
-
+- Xem Global Rules)
 
 ### Bước 2: Planning Phase (Plan mode của Claude)
 
